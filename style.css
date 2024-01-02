@@ -111,9 +111,9 @@ main {
 
 .numbers {
     display: flex;
-    width: 43%;
-    justify-content: space-around;
-   
+    width: 26%;
+    justify-content: space-between;
+    margin-left: 40%;
     
 }
 
