@@ -59,6 +59,12 @@ header {
 
     font-size: 1.5rem;
     font-weight: 500;
+    transition: 0.3s;
+}
+
+.search button:hover {
+    filter: brightness(0.9);
+    cursor: pointer;
 }
 
 
@@ -117,3 +123,6 @@ main {
     
 }
 
+i {
+    color: rgb(212, 0, 0);
+}
