@@ -9,6 +9,11 @@
     async function request(userName) {
         const response = await fetch(`https://api.github.com/users/${userName}`)
 
+         if(pessoas.find( entry => entry.login === userName) !== undefined){
+               throw new Error('ja existe')
+         }
+
+
         if(!response.ok){
             throw 'Erro na request'
         }
@@ -19,6 +24,7 @@
        update()
     }
 
+    
     function update() {    
         localStorage.setItem('pessoas', JSON.stringify(pessoas))
         app.innerHTML = ""
