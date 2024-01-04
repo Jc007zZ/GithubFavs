@@ -1,21 +1,27 @@
 :root {
-    --prymary: rgb(131, 193, 240)
+    --prymary: rgb(131, 193, 240);
+    --bgColor1: rgb(255, 255, 255);
+    --bgColor2: rgb(231, 231, 231);
+    --bgColor3:  rgb(212, 212, 212);
 }
 
-
 * {
-    margin: 0;
     padding: 0;
+    margin: 0;
     box-sizing: border-box;
     font-family: sans-serif;
 }
+
+
 
 body {
     display: flex;
     flex-direction: column;  
     align-items: center;
+
     margin: auto;
     width: 70vw;
+
 }
 
 header {
@@ -31,7 +37,9 @@ header {
 .search {
     display: flex;
     height: 2.5rem;
-    /* border: 1px solid red; */
+
+    background-color: white;
+    border-radius: 0.5rem;
 }
 
 .paiInput {
@@ -69,60 +77,78 @@ header {
 
 
 main {
-    width: 100%;
+    width: 60vw;
     margin-top: 1rem;
+    border-radius: 0.5rem;
+
+    box-shadow: 0 0 1rem -5px black;
 }
 
-.index {
+div.index {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 
-    width: 100%;
-    padding: 1.4rem;
+    width: 60vw;
+    padding-block: 1rem;
     border-radius: 0.3rem 0.3rem 0 0;
 
     background-color: var(--prymary);
+    
 }
 
-.index div {
-    display: flex;  
-    justify-content: space-around;
-    width: 47%;
+div.index p {
+    display: flex;
+    justify-content: center;
+    width: 33%;
+
 }
 
-
-
-.pessoa {
+div.row {
     display: flex;
     justify-content: space-between;
-    padding: 1rem;
-    padding-right: 2rem;
-
-    align-items: center;
-    background-color: rgb(221, 221, 221);
+    width: 60vw;
+    padding-block: 1rem;
 }
 
-.pessoa .img_nome {
+div.row:nth-child(odd){
+    background-color: var(--bgColor2);
+}
+
+div.content {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 33%;
 }
 
-.pessoa img {
+div.content img {
     width: 4rem;
     height: 4rem;
     border-radius: 100%;
     margin-right: 1rem;
 }
 
+div.content h1 {
+    font-size: 1.5rem;
+}
+div.content > div{
+    width: 100px;
+}
 
 
-.numbers {
-    display: flex;
-    width: 26%;
+div.content:last-child {
     justify-content: space-between;
-    margin-left: 40%;
-    
+}
+
+div.content:last-child div {
+    width: 25px;
 }
 
 i {
-    color: rgb(212, 0, 0);
+    margin-right: 1rem;
+    color: rgb(202, 0, 0);
+}
+
+i:hover {
+    cursor: pointer;
 }

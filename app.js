@@ -1,12 +1,15 @@
 let pessoas = []
-
+pessoas = JSON.parse(localStorage.getItem('pessoas'))
 let input = document.getElementById('search')
 let form = document.querySelector('.search')
-let app = document.querySelector('.pessoas')
+let app = document.querySelector('.dados')
+
+update()
 
 form.addEventListener('submit', e => {
     e.preventDefault()
     request(input.value)
+    input.value = ''
 } )
 
 async function request(userName) {
@@ -22,34 +25,45 @@ async function request(userName) {
 
 function criar(resposta) {
     let htmlContent = `
-    <div class="pessoa" id="${resposta.cssId}">
-                <div class="img_nome">
-                    <img src="${resposta.avatar_url}">
-                    <div class="pessoa_nomes">
-                        <h1>${resposta.login}</h1>
-                        <p>${resposta.name}</p>
-                    </div>
+    <div class="row">
+            <div class="content">
+                <img src="${resposta.avatar_url}">
+                <div>
+                    <h1>${resposta.login}</h1>
+                    <p>${resposta.name}</p>
                 </div>
-
-                <div class="numbers">
-                        <p>${resposta.public_repos}</p>
-                        <p>${resposta.followers}</p>
-                    </div>
-                    <i class="fa-solid fa-xmark"></i>
             </div>
-    `
+
+            <div class="content">
+                <p>${resposta.public_repos}</p>
+            </div>
+            <div class="content">
+                <div></div>
+                <p>${resposta.followers}</p>
+                <i class="fa-solid fa-xmark" onclick="remove(${resposta.idCss})"></i>
+            </div>
+    </div>`
+  
     app.innerHTML += htmlContent
 }
 
-function remove() {
-    
+function remove(element) {
+    pessoas.splice(element, 1)
+    update()
 }
 
 function update() {    
+    localStorage.setItem('pessoas', JSON.stringify  (pessoas))
     app.innerHTML = ""
+    let idNumber = 0
     for(entry of pessoas){
         console.log(entry)
-        criar(entry)
+        entry.idCss = idNumber
+        idNumber++
+        criar(entry, idNumber)
     }
 }
+
+
+
 
