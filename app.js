@@ -1,10 +1,14 @@
 let pessoas = []
-pessoas = JSON.parse(localStorage.getItem('pessoas'))
 let input = document.getElementById('search')
 let form = document.querySelector('.search')
 let app = document.querySelector('.dados')
 
-update()
+
+
+if(!(localStorage.getItem('pessoas') == 'null')){
+    pessoas = JSON.parse(localStorage.getItem('pessoas'))
+    update()
+}
 
 form.addEventListener('submit', e => {
     e.preventDefault()
@@ -57,7 +61,6 @@ function update() {
     app.innerHTML = ""
     let idNumber = 0
     for(entry of pessoas){
-        console.log(entry)
         entry.idCss = idNumber
         idNumber++
         criar(entry, idNumber)
